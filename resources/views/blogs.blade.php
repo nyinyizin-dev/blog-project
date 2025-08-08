@@ -16,6 +16,7 @@
             <?= $blog->title ?>
         </a>
     </h1>
+    <p>published at - <?= $blog->date ?></p>
     <div>
         <p><?= $blog->intro ?></p>
     </div>
