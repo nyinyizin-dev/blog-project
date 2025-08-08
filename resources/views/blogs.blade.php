@@ -9,19 +9,19 @@
     <link rel="stylesheet" href="/css/app.css">
 </head>
 
-<body>
-    <?php foreach($blogs as $blog): ?>
-    <h1>
-        <a href="blogs/<?= $blog->slug ?>">
-            <?= $blog->title ?>
-        </a>
-    </h1>
-    <p>published at - <?= $blog->date ?></p>
-    <div>
-        <p><?= $blog->intro ?></p>
-    </div>
-    <?php endforeach; ?>
+<body >
+    @foreach ($blogs as $blog)
+        <h1>
+            <a href="blogs/{{ $blog->slug }}">
+                {{ $blog->title }}
+            </a>
+        </h1>
 
+        <div>
+            <p>published at - {{ $blog->date }}</p>
+            <p>{{ $blog->intro }}</p>
+        </div>
+    @endforeach
 </body>
 
 </html>
