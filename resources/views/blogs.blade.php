@@ -9,6 +9,7 @@
                     {{ $blog->title }}
                 </a>
             </h1>
+            <p>Author - <a href="/users/{{ $blog->author->id }}">{{ $blog->author->name }}</a></p>
             <p>Category - <a href="/categories/{{ $blog->category->slug }}">{{ $blog->category->name }}</a></p>
 
             <div>
