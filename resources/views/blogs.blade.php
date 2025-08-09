@@ -9,7 +9,7 @@
                     {{ $blog->title }}
                 </a>
             </h1>
-            <p>Category - <a href="">{{ $blog->category->name }}</a></p>
+            <p>Category - <a href="/categories/{{ $blog->category->slug }}">{{ $blog->category->name }}</a></p>
 
             <div>
                 <p>published at - {{ $blog->created_at->diffForHumans() }}</p>

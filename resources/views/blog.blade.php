@@ -4,7 +4,7 @@
     </x-slot>
     <h1> {{ $blog->title }}</h1>
     <p>published at - {{ $blog->created_at->diffForHumans() }}, <span>Category - <a
-                href="">{{ $blog->category->name }}</a></span></p>
+                href="/categories/{{ $blog->category->slug }}">{{ $blog->category->name }}</a></span></p>
     <p> {{ $blog->body }}</p>
     <a href="/">go back</a>
 
