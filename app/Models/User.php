@@ -22,7 +22,7 @@ class User extends Authenticatable
     //     'email',
     //     'password',
     // ];
-    protected $guarded=[];
+    protected $guarded = [];
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -49,5 +49,17 @@ class User extends Authenticatable
     public function blogs()
     {
         return $this->hasMany(Blog::class);
+    }
+
+    // accessors function
+    public function getNameAttribute($value)
+    {
+        return ucwords('name');
+    }
+
+    // mutator function
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
     }
 }
