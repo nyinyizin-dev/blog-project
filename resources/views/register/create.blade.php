@@ -38,12 +38,7 @@
                             @enderror
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li class="text-sm text-danger">{{ $error }}</li>
-                            @endforeach
-                        </ul>
+                        <button type="submit" class="btn btn-primary">Submit</button>              
                     </form>
                 </div>
             </div>
