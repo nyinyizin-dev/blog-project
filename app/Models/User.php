@@ -54,7 +54,7 @@ class User extends Authenticatable
     // accessors function
     public function getNameAttribute($value)
     {
-        return ucwords('name');
+        return ucwords($value);
     }
 
     // mutator function

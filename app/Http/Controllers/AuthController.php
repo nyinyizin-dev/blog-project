@@ -15,13 +15,14 @@ class AuthController extends Controller
 
     public function store()
     {
-       $formData=request()->validate([
-            'name'=>['required','max:255','min:3'],
-            'email'=>['required','email',Rule::unique('users','email')],
-            'username'=>['required','max:255','min:3',Rule::unique('users','username')], // table name, column name
-            'password'=>['required','min:8']
+        $formData = request()->validate([
+            'name' => ['required', 'max:255', 'min:3'],
+            'email' => ['required', 'email', Rule::unique('users', 'email')],
+            'username' => ['required', 'max:255', 'min:3', Rule::unique('users', 'username')], // table name, column name
+            'password' => ['required', 'min:8']
         ]);
-        User::create($formData);
-        return redirect('/');
+        $user = User::create($formData);
+        // session()->flash('success', 'Welcome Dear, ' . $user->name);
+         return redirect('/')->with('success', 'Welcome Dear, ' . $user->name);
     }
 }
