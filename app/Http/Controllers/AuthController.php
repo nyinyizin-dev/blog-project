@@ -12,17 +12,26 @@ class AuthController extends Controller
     {
         return view('register.create');
     }
-
     public function store()
     {
-        $formData = request()->validate([
-            'name' => ['required', 'max:255', 'min:3'],
-            'email' => ['required', 'email', Rule::unique('users', 'email')],
-            'username' => ['required', 'max:255', 'min:3', Rule::unique('users', 'username')], // table name, column name
-            'password' => ['required', 'min:8']
+        //validation
+        $formData=request()->validate([
+            'name'=>['required','max:255','min:3'],
+            'email'=>['required','email',Rule::unique('users', 'email')],
+            'username'=>['required','max:255','min:3',Rule::unique('users', 'username')],
+            'password'=>['required','min:8']
         ]);
-        $user = User::create($formData);
-        // session()->flash('success', 'Welcome Dear, ' . $user->name);
-         return redirect('/')->with('success', 'Welcome Dear, ' . $user->name);
+        $user=User::create($formData);
+
+        //login
+        auth()->login($user);
+
+        return redirect('/')->with('success', 'Welcome Dear, '.$user->name);
+    }
+
+    public function logout()
+    {
+        auth()->logout();
+        return redirect('/')->with('success', 'Good bye');
     }
 }
