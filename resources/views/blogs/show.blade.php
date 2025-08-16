@@ -21,20 +21,16 @@
     </div>
     <section class="container">
         <div class="col-md-8 mx-auto">
-            <x-card-wrapper class="bg-light">
-                <form>
-                    <div class="mb-3">
-                        <textarea name="" id="" cols="10" rows="5" placeholder="new comment..." class="form-control broder border-0"></textarea>
-                    </div>
-                    <div class="d-flex justify-content-end">
-
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
-            </x-card-wrapper>
+            @auth
+               <x-comment-form :blog="$blog" />
+            @else
+                <p class="text-center">please <a href="/login">login</a> to participate ih this discussion.</p>
+            @endauth
         </div>
     </section>
-    <x-comments :comments="$blog->comments" />
+    @if ($blog->comments->count())
+        <x-comments :comments="$blog->comments" />
+    @endif
     <x-subcribe />
 
     <x-blogs_you_may_like_section :randomBlogs="$randomBlogs" />

@@ -7,6 +7,7 @@
                 <a href="#subscribe" class="nav-link">Subscribe</a>
                 @auth
                     <a href="" class="nav-link">Welcome {{ auth()->user()->name }}</a>
+                    <img src="{{ auth()->user()->avatar }}" width="50" height="50" class="rounded-circle">
                     <form action="/logout" method="POST">
                         @csrf
                         <button type="submit" class="nav-link btn btn-link">Logout</button>

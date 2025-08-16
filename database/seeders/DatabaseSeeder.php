@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
         // Blog::truncate();
         // Category::truncate();
 
-        $mgmg=User::factory()->create(['name'=>'mgmg','username'=>'mgmg']);
-        $koko=User::factory()->create(['name'=>'koko','username'=>'koko']);
+        $mgmg=User::factory()->create(['name'=>'mgmg','username'=>'mgmg','email'=>'mgmg@gmail.com']);
+        $koko=User::factory()->create(['name'=>'koko','username'=>'koko','email'=>'koko@gmail.com']);
         $frontend=Category::factory()->create(['name'=>'frontend','slug'=>'frontend']);
         $backend=Category::factory()->create(['name'=>'backend','slug'=>'backend']);
 
