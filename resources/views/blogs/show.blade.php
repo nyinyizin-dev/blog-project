@@ -12,6 +12,11 @@
                     <div class="badge bg-primary"><a href="/categories/{{ $blog->category->slug }}"><span
                                 class="badge bg-primary">{{ $blog->category->name }}</span></a></div>
                     <div class="text-secondary">{{ $blog->created_at->diffForHumans() }}</div>
+                    <div class="text-secondary">
+                        <button class="btn btn-warning">
+                            subscribe
+                        </button>
+                    </div>
                 </div>
                 <p class="lh-md mt-3">
                     {{ $blog->body }}
@@ -22,7 +27,7 @@
     <section class="container">
         <div class="col-md-8 mx-auto">
             @auth
-               <x-comment-form :blog="$blog" />
+                <x-comment-form :blog="$blog" />
             @else
                 <p class="text-center">please <a href="/login">login</a> to participate ih this discussion.</p>
             @endauth
@@ -31,7 +36,7 @@
     @if ($blog->comments->count())
         <x-comments :comments="$blog->comments" />
     @endif
-    <x-subcribe />
+
 
     <x-blogs_you_may_like_section :randomBlogs="$randomBlogs" />
 
