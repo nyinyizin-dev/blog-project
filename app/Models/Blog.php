@@ -50,4 +50,14 @@ class Blog extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    public function unSubscribe()
+    {
+        $this->subscribers()->detach(auth()->id()); // delete blog_id & user_id
+    }
+
+    public function subscribe()
+    {
+        $this->subscribers()->attach(auth()->id()); // attach blog_id & user_id
+    }
 }
