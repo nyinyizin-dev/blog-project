@@ -11,9 +11,9 @@ class BlogController extends Controller
     {
         return view('blogs.index', [
             'blogs' => Blog::latest()
-            ->filter(request(['search','category','username']))
-            ->paginate(6)
-            ->withQueryString(),
+                ->filter(request(['search', 'category', 'username']))
+                ->paginate(6)
+                ->withQueryString(),
         ]);
     }
 
@@ -27,12 +27,21 @@ class BlogController extends Controller
 
     public function subscriptionHandler(Blog $blog)
     {
-        if(auth()->user()->isSubscribed($blog)){
+        if (auth()->user()->isSubscribed($blog)) {
             $blog->unSubscribe();
         } else {
             $blog->subscribe();
         };
 
         return back();
+    }
+
+    public function create()
+    {
+        if (auth()->guest() || !auth()->user()->is_admin) {
+            abort(403);
+        };
+
+        return view('blogs.create');
     }
 }
